@@ -151,8 +151,8 @@ app.component.spec.ts => for tests
 ng g component components/user
 
 ```
-> Note: To open terminal in vscode type ` ctrl + ` `
-
+> Note: To open terminal in vscode type `` ctrl + ` ``
+> Note: It imports this and also adds to declarations in app.module.ts automatically
 ### look inside component.ts
   * We have Constructor 
   * We also have `ngOnInit()` => lifecycle hook 
@@ -162,13 +162,24 @@ ng g component components/user
 	export class UserComponent implements OnInit {
 
 	  // Defines a model with static typing on the field types
+	  // Defines a model with static typing on the field types
 	  name:string;  // name is type string
-	  userNum:number;  // userNum is type number
-
+	  age:number;  // age is type number
+	  email:string; //email is a string
+	  address:Address; // address is of type Address
+	  hobbies:string[]; // hobbies is a string array
+	  hello:any; // hello can accept any type of data
+  
 	  constructor() { 
 	    this.name = "heyllo"; //`this` refers to itself. 
-	    //so this.name means name inside of itself
+	    this.address = {
+	      street: "street1",
+	      city: "san francisco",
+	      state: "CA"
 	  }
+    
+    //so this.name means name inside of itself
+  }
 
 	  ngOnInit() { //Life cycle method
 	  }
@@ -185,29 +196,34 @@ ng g component components/user
 // A custom complex type Address
 interface Address{
   street:string,
-  apt:string,
-  zipcode:number,
+  city:string,
+  state:string,
 }
 
 ```
 
-Now using this in constructor for example can then look like
-
+###
+user template can be like below:
 ```
-constructor() { 
-    this.name = "heyllo"; //`this` refers to itself. 
-    //address adheres to the type of Address as defined above
-    this.address = {
-      street: "street1",
-      apt: "A201",
-      zipcode: 94538
-    }
-    //so this.name means name inside of itself
-  }
+<h1>{{name}}</h1>
+<ul>
+  <li>Age: {{age}}</li>
+  <li> Email: {{email}}</li>
+  <li> {{address.street}} {{address.city}} {{address.state}}</li>
+</ul>
 
 ```
 
+### Handling loops with directive (ng-loop)
 
+```
+<h1>hobbies</h1>
+<ul>
+  <li *ngFor ="let hobby of hobbies">{{hobby}}</li>
+</ul>
+
+```
+> Note: creates multiple `li` items and uses `hobby` as looping variable over array `hobbies` 
 
 
 
