@@ -1,8 +1,8 @@
 ## What is Angular?
-Frontend/ Client Side Javascript framework
-Used to build powerful single page applications
-Part of very powerful MEAN stack
-Kinda like HTML for dynamic web applications
+* Frontend/ Client Side Javascript framework
+* Used to build powerful single page applications
+* Part of very powerful MEAN stack
+* Kinda like HTML for dynamic web applications
 
 What is Angular Not?
 * Not a server side framework
@@ -52,9 +52,9 @@ Testing
 
 What is TypeScript?
 
-Superset of Javascript and adds some features
-Optional static typing (string, number, boolean)
-class based object oriented programming (like in java, php)
+* Superset of Javascript and adds some features
+* Optional static typing (string, number, boolean)
+* class based object oriented programming (like in java, php)
 
 
 ## Components
