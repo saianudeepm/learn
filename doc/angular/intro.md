@@ -178,6 +178,34 @@ ng g component components/user
 
   ```
 
+### Creating custom types
+* you can create a new custom type using `interface`. Eg: think of an address of a user which can contain street, apt and zipcode.
+
+```
+// A custom complex type Address
+interface Address{
+  street:string,
+  apt:string,
+  zipcode:number,
+}
+
+```
+
+Now using this in constructor for example can then look like
+
+```
+constructor() { 
+    this.name = "heyllo"; //`this` refers to itself. 
+    //address adheres to the type of Address as defined above
+    this.address = {
+      street: "street1",
+      apt: "A201",
+      zipcode: 94538
+    }
+    //so this.name means name inside of itself
+  }
+
+```
 
 
 
