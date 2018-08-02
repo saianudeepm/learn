@@ -214,7 +214,7 @@ user template can be like below:
 
 ```
 
-### Handling loops with directive (ng-loop)
+### Handling loops with directive (ngFor)
 
 ```
 <h1>hobbies</h1>
@@ -225,7 +225,12 @@ user template can be like below:
 ```
 > Note: creates multiple `li` items and uses `hobby` as looping variable over array `hobbies` 
 
-
+#### We can also access the index inside this loop like below
+```
+<ul>
+  <li *ngFor ="let hobby of hobbies; let i= index">{{i+1}}.{{hobby}}</li>
+</ul>
+```
 
 
 
