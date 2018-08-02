@@ -1,10 +1,11 @@
-## What is Angular?
+# Angular  JS Intro
+### What is Angular?
 * Frontend/ Client Side Javascript framework
 * Used to build powerful single page applications
 * Part of very powerful MEAN stack
 * Kinda like HTML for dynamic web applications
 
-What is Angular Not?
+### What is Angular Not?
 * Not a server side framework
 * Not a js library like (jquery, React etc)
 * Not a design pattern like (MVC)
