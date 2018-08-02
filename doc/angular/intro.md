@@ -5,19 +5,18 @@ Part of very powerful MEAN stack
 Kinda like HTML for dynamic web applications
 
 What is Angular Not?
-not a server side framework
-not a js library like (jquery, React etc)
-Not a design pattern like (MVC)
-not a broswer extension
+* Not a server side framework
+* Not a js library like (jquery, React etc)
+* Not a design pattern like (MVC)
+* Not a broswer extension
 
 ## History:
 
-Created as a competitor to ember.js
-Angular 1 based on controller and scopes
-Angular 2 (complete rewrite)-> added components (more to compete with react)
-Angular 3 (issues with router package going out of sync)
-Angular 4 => Backward compatible with Angular 2
-Most of changes are under the hood, cleaned it up 
+* Created as a competitor to ember.js
+* Angular 1 based on controller and scopes
+* Angular 2 (complete rewrite)-> added components (more to compete with react)
+* Angular 3 (issues with router package going out of sync)
+* Angular 4 => Backward compatible with Angular 2 and most of changes are under the hood, cleaned it up 
 
 
 ### Why use Angular over Javascript?
