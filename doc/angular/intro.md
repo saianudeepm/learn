@@ -107,6 +107,78 @@ export class UserService {
 ```
 
 
+### Installation
+``` 
+npm install -g @angular/cli
+
+```
+
+### Create a new angular app
+``` 
+ng new a4app 
+
+```
+
+### Start the server
+```
+ng serve
+
+```
+Starts up the server on 4200.
+
+[Localhost url](http://localhost:4200)
+
+> Note: Look at package.json, angular.json 
+
+### Look inside the src
+
+Then you can look at src/app folder
+```
+app.module.ts  => all the components used in applicatoin needs to be brought in here.
+
+app.component.ts => the app component class (typescript)
+
+app.component.html => app components template
+
+app.component.css => app components css
+
+app.component.spec.ts => for tests
+
+```
+
+### To generate new component called user
+``` 
+ng g component components/user
+
+```
+> Note: To open terminal in vscode type ` ctrl + ` `
+
+### look inside component.ts
+  * We have Constructor 
+  * We also have `ngOnInit()` => lifecycle hook 
+
+  ```
+
+	export class UserComponent implements OnInit {
+
+	  // Defines a model with static typing on the field types
+	  name:string;  // name is type string
+	  userNum:number;  // userNum is type number
+
+	  constructor() { 
+	    this.name = "heyllo"; //`this` refers to itself. 
+	    //so this.name means name inside of itself
+	  }
+
+	  ngOnInit() { //Life cycle method
+	  }
+
+}
+
+
+  ```
+
+
 
 
 
