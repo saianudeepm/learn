@@ -232,6 +232,45 @@ user template can be like below:
 </ul>
 ```
 
+## Events
+```
+<button (click)="onClick()">click me</button>
+```
+and then define onClick() function inside the user.ts file
 
+## Forms
+Adding a form 
 
+```
+<form (submit)="addHobby(hobby.value)">
+<div>
+  <label for="hobby">Hobby:</label>
+  <input type="text" #hobby>
+</div>
+</form>
 
+```
+
+* Sample addHobby() definition in user.ts file
+
+```
+  addHobby(hobby){
+    console.log(hobby);
+    this.hobbies.unshift(hobby); // push to beginning
+    return false;
+  }
+```
+
+* Sample deleteHobby() can look like this
+
+```
+ deleteHobby(hobby){
+    console.log(hobby);
+    for(let i =0; i<this.hobbies.length;i++){
+      if(this.hobbies[i] == hobby){
+        this.hobbies.splice(i,1); //delete i from the index
+      }
+    }
+  }
+  
+```
