@@ -357,3 +357,11 @@ imports: [RouterModule.forRoot(appRoutes)]
 
 then inside `app.component.html`, add `<router-outlet>` where the router displays the component which matches with the route
 
+Syntax for using the App routing module:
+```
+<ul>
+    <li><a routerLink = "/">User</a></li>
+    <li><a routerLink = "/about">About</a></li>
+</ul>
+
+```
