@@ -355,5 +355,5 @@ imports: [RouterModule.forRoot(appRoutes)]
 
 ```
 
-then inside `app.component.html`, add `<router-outlet>`tag can be used which shows the matched route.
+then inside `app.component.html`, add `<router-outlet>` where the router displays the component which matches with the route
 
