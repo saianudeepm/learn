@@ -365,3 +365,39 @@ Syntax for using the App routing module:
 </ul>
 
 ```
+
+## Observables
+
+* Basically emit events that other things called observers can respond to .
+* They allow us to do multiple actions simultaenously like promises.
+
+* Inside the Service
+
+```
+import { map, take } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+
+   //returns all posts as json
+   getPosts():Observable<Post[]>{
+    return this.http.get('https://jsonplaceholder.typicode.com/posts')
+     .pipe(map(res => res.json())) 
+   }
+
+```
+
+* then inside the user.component.ts to use the service 
+
+
+```
+
+constructor(private dataService:DataService) {  // register the service to the class
+...
+}
+
+ngOnInit() { //Life cycle method
+    this.dataService.getPosts().subscribe((posts) => {
+      this.posts = posts;
+    })
+  }
+  
+```
