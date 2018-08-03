@@ -401,3 +401,88 @@ ngOnInit() { //Life cycle method
   }
   
 ```
+
+## Angular in memory Web Api for mocking
+
+*Install angular in memory web api for mocking:*
+```
+npm i -S angular-in-memory-web-api
+```
+*Install a new mock service*
+```
+ng generate service services/in-memory-data
+```
+
+*Import the `memory web api` & `in-memory-data` service into app.module.ts:*
+```
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryDataService} from './services/in-memory-data.service';
+
+// enable in memory web api module to use in memory data service for which mock routes are defined.
+// key will be the mock route value .eg api/posts url requests will be looking for route `posts` in InMemoryDataService
+imports: [
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation:false})
+  ]
+```
+
+*Mock InMemoryDataService:*
+```
+export class InMemoryDataService {
+
+   createDb(){
+     const posts = [
+      {
+      userId: 1,
+      id: 1,
+      title: "title1",
+      body: "body1"
+      },
+      {
+      userId: 1,
+      id: 2,
+      title: "title2",
+      body: "body2"
+      },
+      {
+      userId: 1,
+      id: 3,
+      title: "title3",
+      body: "body3"
+      }
+    ];
+     return { 'posts': posts };
+   }
+  constructor() { }
+}
+
+```
+> Note: The return object key is the name of the API route (which becomes /api/posts by default), and the value is the data we want to return when the in-memory API receives a request to this route.
+
+[more details:](https://shermandigital.com/blog/in-memory-web-api-for-testing-angular-apps/)
+
+* To use the in memory api, we can use a PostService like below which simulates making a real http call.
+* In memory Api upon looking at `api/posts` url will respond with a mock response
+
+```
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http' 
+import {Post} from '../components/user/user.component'
+import { Observable, of } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PostService {
+  private postsUrl = 'api/posts';
+  
+  constructor(private httpClient:HttpClient) {
+    
+   }
+  
+   getMockPosts():Observable<Post[]> {
+    return this.httpClient.get<Post[]>(this.postsUrl)
+   }
+}
+
+
+```
