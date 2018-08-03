@@ -274,3 +274,86 @@ Adding a form
   }
   
 ```
+
+### ngModel
+
+* used for binding the variables in component to its template. 
+* `[()]` // indicates data binding
+* [(ngModel)]="age" //bind this input to `age` property
+* `name` attribute is also required for ngModel as below
+
+```
+<div>
+      <label for="age">Age:</label>
+      <input type="number" [(ngModel)]="age" name="age">
+  </div>
+
+```
+
+## Services
+Creating a Service
+```
+ng g service services/data
+```
+
+> Note:
+Adds:
+1. Adds `data.service.ts` file in services folder.
+2. Adds the class DataService in it
+3. Adds the @Injectable
+Doesnt add:
+1. it in app.module.ts
+
+So we should add it in app.module.ts in
+1. import {DataService} from './services/data.service'; //import statement 
+2. providers: [DataService] // Services are providers
+
+Whenever you want to use a service you have to inject as a dependency to be able to use it by using it inside a constructor
+
+```
+import {DataService}  from '../../services/data.service' 
+
+constructor(private dataService:DataService) { ...}
+```
+
+## Http module
+
+* import httpModule into app.module.ts
+* add it to imports section
+
+```
+import {HttpModule} from '@angular/http';
+
+imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule
+  ]
+
+```
+
+## Routing
+
+*Install the router:*
+* --flat flag will create it the router at root level instead of creating new file
+* --module=app will add it to app.module.ts file
+```
+ng generate module app-routing --flat --module=app
+```
+```
+import {RouterModule, Routes} from '@angular/router'
+
+//create list of routes for each path
+const appRoutes: Routes = [
+  { path:'', component:UserComponent},
+  { path:'about', component:AboutComponent}
+
+];
+
+// import the RouterModule & provide it the list of routes
+imports: [RouterModule.forRoot(appRoutes)]
+
+```
+
+then inside `app.component.html`, add `<router-outlet>`tag can be used which shows the matched route.
+
