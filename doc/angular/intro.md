@@ -59,6 +59,11 @@ What is TypeScript?
 
 
 ## Components
+0. Generate component like so:
+```
+ng generate component components/<component_name>
+
+```
 1. import component from angular core
 import{Component} from '@angular/core'
 
@@ -91,6 +96,10 @@ So here we get to use our own custom tags and
 * When you want to share data across multiple components. 
 Then we can inject the service into components and use the data in each one.
 
+0. Generate a service using:
+```
+ng generate service services/<service_name>
+```
 1. We import Injectable package from angular core
 
 2. we annotate using decorator @Injectable()
