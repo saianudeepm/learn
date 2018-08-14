@@ -104,3 +104,59 @@ actor1 ! Start(actor2) // send a Start message to actor1 with actorRef as actor2
             case x => println(x.toString) 
           } 
  ```
+## Become/unbecome behavior of an actor
+* When we want our actor to change its behavior based on state.
+* Thus, using become/unbecome, we can hot swap the actor functionality at runtime.
+
+eg: Define an actor which changes its behavior based on whether the state is true or false, 
+
+```
+class BecomeUnBecomeActor extends Actor { 
+      def receive: Receive = { 
+        case true => context.become(isStateTrue) 
+        case false => context.become(isStateFalse) 
+        case _ => println("I don't know what you want to say !! ") 
+      } 
+      def isStateTrue: Receive  = { 
+        case msg : String => println(s"$msg") 
+        case false => context.become(isStateFalse) 
+      } 
+      def isStateFalse: Receive  = { 
+        case msg : Int => println(s"$msg") 
+        case true =>  context.become(isStateTrue) 
+      } 
+    } 
+//main thread
+  becomeUnBecome ! true 
+  becomeUnBecome ! "Hello how are you?" 
+  becomeUnBecome ! false 
+  becomeUnBecome ! 1100 
+  becomeUnBecome ! true 
+  becomeUnBecome ! "What do u do?"
+
+//Output
+  Hello how are you?
+  1100
+  What do u do? 
+
+```
+
+## Stopping an actor
+There are two ways :
+* Using PoisonPill : PoisonPill is the inbuilt message
+* Using context.stop(actorRef) : 
+
+```
+case object Stop 
+
+override def receive: Receive = { 
+    case msg:String => println(s"$msg") 
+    case Stop => context.stop(self) 
+  }
+  
+//main thread
+shutdownActor1 ! PoisonPill //PoisonPill is the inbuilt message that is handled after all the messages that were already queued in the mailbox.
+
+shutdownActor2 ! Stop //Context.stop is basically used for an ordered shutdown of actors when you want the child actors to stop first, then the parent actor, followed by the ActorSystem to stop top-level actors.
+
+```
